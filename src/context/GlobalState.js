@@ -2,7 +2,7 @@ import React, { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
 
 const initialState = {
-  cart: [],
+  cart: JSON.parse(localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem('cart')) : [],
   orders: [],
 };
 
@@ -24,6 +24,13 @@ export const GlobalProvider = ({ children }) => {
       payload: item,
     });
   };
+
+  const setItemCountinCart = (itemValue) => {
+    dispatch({
+      type: "SET_ITEM_COUNT_IN_CART",
+      payload: itemValue,
+    })
+  }
 
   const clearCart = () => {
     dispatch({
@@ -55,6 +62,7 @@ export const GlobalProvider = ({ children }) => {
         clearCart,
         addItemToOrderList,
         removeItemFromOrderList,
+        setItemCountinCart,
       }}
     >
       {children}

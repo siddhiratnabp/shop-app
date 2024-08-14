@@ -10,24 +10,25 @@ function ItemDetail() {
   const params = useParams();
   const itemId = parseInt(params?.id);
   const item = !!itemId && getItemDetail(itemId);
-  const { addItemToCartList, cart } = useContext(GlobalContext);
+  const { addItemToCartList, cart, removeItemFromCartList, setItemCountinCart } = useContext(GlobalContext);
   const [isAdded, setIsAdded] = useState(
     cart.findIndex((c) => c.id === itemId) > -1
   );
+  const itemCartCount = isAdded ? cart.find(obj => obj.id === item.id).count : 0;
 
   return (
     <div className="item-detail-container">
       <Link to="/"> &#8592; Back</Link>
       <div className="item-detail">
         <div className="item-detail-image">
-          <img src={item.image} alt={"Item image"} />
+          <img src={item.image.includes("https://") ? item.image : '/shop-app/' + item.image} alt={"Item image"} />
         </div>
         <div className="item-detail-info">
           <div className="item-brand" style={{ margin: "0px 10px" }}>
             {item.brand}
           </div>
           <div className="item-name">{item.name}</div>
-          <div className="item-price">${item.price}</div>
+          <div className="item-price">Rs. {item.price}</div>
 
           <select className="item-size">
             <option value={"S"}> Select size (S)</option>
@@ -37,14 +38,38 @@ function ItemDetail() {
           </select>
           <button
             className="item-btn"
-            disabled={isAdded}
             onClick={() => {
               addItemToCartList(item);
               setIsAdded(true);
             }}
           >
-            {isAdded ? <Link to="/cart">Go to Cart</Link> : "Add To bag"}
+            {isAdded ? "Add more (+)" : "Add To bag"}
           </button>
+          {
+            isAdded ? <span>
+              <input type="text" value={itemCartCount} className="item-cart-count" 
+              onChange = {(e) => {
+                let value = e.target.value;
+                if(isNaN(value)) {return}
+                if(Number(e.target.value) === 0) {setIsAdded(false)}
+                setItemCountinCart({
+                  item: item,
+                  cartCount: e.target.value
+                })
+              }}
+              />
+              <button className="item-btn" style={{ width: '40px', marginLeft: '5px' }}
+              onClick = {() => {
+                removeItemFromCartList(item);
+                if(itemCartCount === 1) {setIsAdded(false) };
+              }}>
+                -
+              </button> <br /><button
+                className="item-btn"><Link to="/cart">Go to Cart</Link></button></span>
+              : ""
+          }
+
+
           <p className="item-description">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text

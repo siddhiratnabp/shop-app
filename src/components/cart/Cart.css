@@ -18,3 +18,7 @@
 .cart-container button {
   margin-top: 10px;
 }
+
+.item-count {
+  font-size: small;
+}

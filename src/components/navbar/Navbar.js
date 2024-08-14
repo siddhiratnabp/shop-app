@@ -8,10 +8,10 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <Link to="/">
-      <img src={"Logo - High Quality.jpg"} alt={"Logo"} width={100} />
+      <img src={"/shop-app/Logo - High Quality.jpg"} alt={"Logo"} width={100} />
       </Link>
       <ul className="navbar-ul">
-        <li>Home</li>
+        <li><Link to="/">Home</Link></li>
         <li>Shop</li>
         <li>Reviews</li>
         <li>About</li>

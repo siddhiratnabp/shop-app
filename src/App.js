@@ -10,7 +10,7 @@ import Checkout from "./components/checkout/Checkout";
 function App() {
   return (
     <div className="App">
-      <BrowserRouter Basename="/shop-app">
+      <BrowserRouter basename="/shop-app">
         <div>
           <Navbar />
         </div>
@@ -19,7 +19,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/checkout" element={<Checkout />} />
-          <Route exact path="/shop-app" element={<HomePage />} />
+          <Route exact path="" element={<HomePage />} />
         </Routes>
       </BrowserRouter>
     </div>

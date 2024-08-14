@@ -56,5 +56,13 @@
   outline: none;
 }
 
+.item-cart-count {
+  width: 25px;
+  font-size: 1.1em;
+  text-align: center;
+  margin-left: 5px;
+  height: 35px;
+}
+
 .item-description {
 }
