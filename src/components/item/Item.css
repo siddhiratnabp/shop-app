@@ -43,6 +43,7 @@
   background-color: #4BB543;
   color: white;
   padding: 10px;
+  font-size: 0.6rem;
   animation: translate-left cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.25s forwards;
 }
 

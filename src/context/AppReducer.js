@@ -67,6 +67,18 @@ var reducer = (state, action) => {
           (order) => order.orderId !== action.payload.id
         ),
       };
+    case "ADD_ADDRESS":
+      localStorage.setItem('fullAddress', action.payload);
+      return {
+        ...state,
+        fullAddress: action.payload,
+      };
+    case "ADD_DEVICE_ID":
+      localStorage.setItem('deviceID', action.payload);
+      return {
+        ...state,
+        deviceID: action.payload,
+      };
     default:
       return state;
   }

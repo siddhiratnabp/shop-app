@@ -1,14 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../../context/GlobalState";
 import "./Cart.css";
+import { Steps } from 'primereact/steps';
 
-function Cart() {
+function Cart({buyingStep, buyingSteps, setBuyingStep}) {
   const { addItemToCartList, cart, removeItemFromCartList } = useContext(GlobalContext);
   let total = 0
+  let totalWeight = 0
+  setBuyingStep(0);
 
   return (
     <div className="cart-container">
+      <Steps model={buyingSteps} activeIndex={buyingStep} />
       <h1>Cart</h1>
       {!cart.length ? (
         <p>No Item Added! Please add something to your cart</p>
@@ -18,6 +22,7 @@ function Cart() {
             {
               cart.map((item) => (
                 <div className="cart-item" key={item.id}>
+                <img src={item.image} style={{maxWidth: "25%"}} />
                 <div className="item-price">Rs. {item.price} <span className="item-count">
                   <button onClick={()=>{addItemToCartList(item)}}
                   style={{background: "#343434", padding: "2px", color: "white"}}>
@@ -30,6 +35,7 @@ function Cart() {
                 </span>
                  = <strong>Rs. {Math.round(item.price * item.count)}</strong>
                 </div>
+                <div style={{float: 'right'}}>{(item.weight * item.count).toFixed(2)} kgs</div>
                 <Link to={`/item/${item.id}`} key={item.id}>
                   <div className="item-name">{item.name}</div>
                   <div className="item-expectedDelivery">
@@ -41,7 +47,8 @@ function Cart() {
           </div>
           <br />{cart.forEach((item) => {
             total += Math.round(item.price * item.count)
-          })}Rs. {total}<br />
+            totalWeight += item.weight * item.count
+          })}Rs. {total} & {totalWeight.toFixed(2)} kgs <br />
           <Link to="/checkout">
             <button className="item-btn">Next</button>
           </Link>

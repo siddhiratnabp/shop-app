@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
 import "./Item.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import { GlobalContext } from "../../context/GlobalState";
 
-function Item({ name, rating, price, saleDiscount, image, brand, id }) {
+function Item({ name, rating, price, saleDiscount, image, brand, id, weight }) {
   const { addItemToCartList, cart, removeItemFromCartList } = useContext(GlobalContext);
   const [isAdded, setIsAdded] = useState(
     cart.findIndex((c) => c.id === id) > -1
   );
+  const navigate = useNavigate();
 
   return (
     <div className="item-card">
@@ -18,14 +19,18 @@ function Item({ name, rating, price, saleDiscount, image, brand, id }) {
       <div className="item-name">
         <Link to={`/item/${id}`} key={id}><p className="name">{name}</p></Link>
         {
-          isAdded ? <Link to={'/cart'}><span className="success-btn">Go to cart</span></Link> 
+          isAdded ? <Link to={'/cart'}><span className="success-btn">Go to cart <i class="fas fa-shopping-cart"></i></span></Link> 
           :(<>
           <i  onClick={() => {
-            addItemToCartList({ name, rating, price, saleDiscount, image, brand, id });
+            addItemToCartList({ name, rating, price, saleDiscount, image, brand, id, weight });
             setIsAdded(true);
           }}
       class="fa-solid fa-cart-plus"></i>
-          <span>Buy</span>
+          <span onClick={() => {
+            addItemToCartList({ name, rating, price, saleDiscount, image, brand, id, weight });
+            setIsAdded(true);
+            navigate("/cart");
+          }} >Buy</span>
           </>
           )
         }   

@@ -38,12 +38,15 @@ function ItemDetail() {
           </select>
           <button
             className="item-btn"
+            style={
+              {background:"#4BB543"}
+            }
             onClick={() => {
               addItemToCartList(item);
               setIsAdded(true);
             }}
           >
-            {isAdded ? "Add more (+)" : "Add To bag"}
+            {isAdded ? "Add more (+)" : (<><span>Add To Cart <i class='fas fa-shopping-cart'></i></span></>)}
           </button>
           {
             isAdded ? <span>
@@ -58,14 +61,14 @@ function ItemDetail() {
                 })
               }}
               />
-              <button className="item-btn" style={{ width: '40px', marginLeft: '5px' }}
+              <button className="item-btn" style={{ width: '40px', marginLeft: '5px', background: '#de450a'}}
               onClick = {() => {
                 removeItemFromCartList(item);
                 if(itemCartCount === 1) {setIsAdded(false) };
               }}>
                 -
               </button> <br /><button
-                className="item-btn"><Link to="/cart">Go to Cart</Link></button></span>
+                className="item-btn"><Link to="/cart">Go to Cart <i class='fas fa-shopping-cart'></i></Link></button></span>
               : ""
           }
 

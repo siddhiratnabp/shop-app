@@ -14,6 +14,7 @@ function ItemList({ items }) {
             image={item.image.includes("https://") ? item.image : '/shop-app/'+item.image}
             brand={item.brand}
             id={item.id}
+            weight={item.weight}
           />
       ))}
     </div>
