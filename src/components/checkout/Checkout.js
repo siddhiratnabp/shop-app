@@ -6,7 +6,8 @@ import * as XLSX from 'xlsx';
 import Select from 'react-select'
 import 'primereact/resources/themes/nano/theme.css'
 import { Steps } from 'primereact/steps';
-
+import { InputText } from 'primereact/inputtext';
+        
 
 
 const assignShippingCharges = (
@@ -82,7 +83,7 @@ const assignShippingCharges = (
 
 
 const Checkout = ({buyingStep, setBuyingStep, toastBottomCenter}) => {
-  const { cart, orders, addItemToOrderList, addFullAddress, fullAddress} = useContext(GlobalContext);
+  const { cart, orders, addItemToOrderList, addFullAddress, fullAddress, fullName, addFullName, phone, addPhone} = useContext(GlobalContext);
   const navigate = useNavigate();
   
   const [shippingCharges, setShippingCharges] = useState([]);
@@ -198,6 +199,26 @@ const Checkout = ({buyingStep, setBuyingStep, toastBottomCenter}) => {
       });
       return;
     }
+
+    if (fullName === "") {
+      toastBottomCenter.current.show({
+        severity: 'error',
+        summary: '📌No Full Name there!',
+        detail: 'Please provide us your full name in order to ensure correct delivery.',
+        life: 3000
+      });
+      return;
+    }
+
+    if (phone === "") {
+      toastBottomCenter.current.show({
+        severity: 'error',
+        summary: '📌No phone number there!',
+        detail: 'Please provide us your phone number in order to ensure correct delivery.',
+        life: 3000
+      });
+      return;
+    }
     addItemToOrderList({
       orderId: orders.length + 1,
       buyerId: 1,
@@ -209,6 +230,8 @@ const Checkout = ({buyingStep, setBuyingStep, toastBottomCenter}) => {
       area: selected.area,
       branch: selected.branch,
       address: fullAddress,
+      name: fullName,
+      phone: phone,
       isConfirmed: false,
     });
     setBuyingStep(2);
@@ -222,10 +245,12 @@ const Checkout = ({buyingStep, setBuyingStep, toastBottomCenter}) => {
           <div>
             <div className="custom-row">
               <h4>Order Review</h4>
-              <span>{cart?.length} items in cart</span><br /><br />
+              <div className="cart-number">
+              <span>{cart?.length} item(s) in the cart.</span>
               <button className="item-btn">
               <Link to="/cart">Go back to Cart <i class='fas fa-shopping-cart'></i></Link>
               </button>
+              </div>
             </div>
             <div className="custom-row">
               <h4>Select Location * - Required</h4>
@@ -242,8 +267,7 @@ const Checkout = ({buyingStep, setBuyingStep, toastBottomCenter}) => {
                   setSetFrom("Top")
                 }} /> <br />
                <strong>Or,</strong><br /><br />
-                Pick:
-                District:* <Select options={districtOptions} isDisabled={shippingBranchSelected && setFrom==="Top"} onChange={(district) => {
+                <div className="custom-row-form">Pick: District:*<Select options={districtOptions} isDisabled={shippingBranchSelected && setFrom==="Top"} onChange={(district) => {
                   setSelected({
                     "district": district.value,
                     "municipality": "",
@@ -277,8 +301,12 @@ const Checkout = ({buyingStep, setBuyingStep, toastBottomCenter}) => {
                     "area": area.value,
                   })
                 }} />
-                Full Address:* <input type="text" placeholder="Please input your full address"
-                onChange={(e) => addFullAddress(e.target.value)} value={fullAddress} /> 
+                Full Address:* <InputText onChange={(e) => addFullAddress(e.target.value)} value={fullAddress} />
+
+                Name:* <InputText onChange={(e) => addFullName(e.target.value)} value={fullName} /> 
+
+                <label htmlFor="phon">Phone:*</label> <InputText id="phon" /* keyfilter={/^[0-9]{10}$/} */ keyfilter="num" onChange={(e) => addPhone(e.target.value)} value={phone} /> 
+                </div>
               </span>
             </div>
             <div className="custom-row">
@@ -295,7 +323,7 @@ const Checkout = ({buyingStep, setBuyingStep, toastBottomCenter}) => {
               </div>
               <div className="checkout-summary">
                 <span>Weight</span>
-                <span>{weightTotal.toFixed(2)} kgs</span>
+                <span>{weightTotal.toFixed(2)} kg(s)</span>
               </div>
             </div>
             <div className="custom-row">

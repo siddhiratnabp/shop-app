@@ -27,11 +27,12 @@ function Item({ name, category, subCategory, mainImage, image2, image3, image4, 
           :(<>
           <i  onClick={() => {
             // addItemToCartList({ name, rating, price, saleDiscount, image, brand, id, weight });
+            addItemToCartList({ mainImage, weight, id, name, price, sku });
             setIsAdded(true);
           }}
       class="fa-solid fa-cart-plus"></i>
           <span onClick={() => {
-            // addItemToCartList({ name, rating, price, saleDiscount, image, brand, id, weight });
+            addItemToCartList({ mainImage, weight, id, name, price, sku });
             setIsAdded(true);
             navigate("/cart");
           }} >Buy</span>

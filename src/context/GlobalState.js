@@ -5,7 +5,9 @@ const initialState = {
   cart: JSON.parse(localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem('cart')) : [],
   orders: JSON.parse(localStorage.getItem('orders')) ? JSON.parse(localStorage.getItem('orders')) : [],
   deviceID: localStorage.getItem('deviceID') ? localStorage.getItem('deviceID') : '',
-  fullAddress: localStorage.getItem('fullAddress') ? localStorage.getItem('fullAddress') : ''
+  fullAddress: localStorage.getItem('fullAddress') ? localStorage.getItem('fullAddress') : '',
+  fullName: localStorage.getItem('fullName') ? localStorage.getItem('fullName') : '',
+  phone: localStorage.getItem('phone') ? localStorage.getItem('phone') : ''
 };
 
 export const GlobalContext = createContext(initialState);
@@ -60,6 +62,20 @@ export const GlobalProvider = ({ children }) => {
       payload: item,
     });
   };
+
+  const addFullName = (item) => {
+    dispatch({
+      type: "ADD_FULL_NAME",
+      payload: item,
+    });
+  };
+
+  const addPhone = (item) => {
+    dispatch({
+      type: "ADD_PHONE",
+      payload: item,
+    });
+  };
   
   const addDeviceID = (item) => {
     dispatch({
@@ -75,6 +91,8 @@ export const GlobalProvider = ({ children }) => {
         orders: state.orders,
         deviceID: state.deviceID,
         fullAddress: state.fullAddress,
+        fullName: state.fullName,
+        phone: state.phone,
         addItemToCartList,
         removeItemFromCartList,
         clearCart,
@@ -82,6 +100,8 @@ export const GlobalProvider = ({ children }) => {
         removeItemFromOrderList,
         setItemCountinCart,
         addFullAddress,
+        addFullName,
+        addPhone,
         addDeviceID
       }}
     >

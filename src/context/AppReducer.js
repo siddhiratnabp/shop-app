@@ -73,6 +73,18 @@ var reducer = (state, action) => {
         ...state,
         fullAddress: action.payload,
       };
+      case "ADD_FULL_NAME":
+        localStorage.setItem('fullName', action.payload);
+        return {
+          ...state,
+          fullName: action.payload,
+        };
+        case "ADD_PHONE":
+          localStorage.setItem('phone', action.payload);
+          return {
+            ...state,
+            phone: action.payload,
+          };
     case "ADD_DEVICE_ID":
       localStorage.setItem('deviceID', action.payload);
       return {
