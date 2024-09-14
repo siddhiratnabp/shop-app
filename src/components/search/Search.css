@@ -12,6 +12,12 @@
     margin: auto;
     width: var(--searchbox-width);
 }
+.p-autocomplete-panel {
+    height: 50vh !important;
+}
+.p-autocomplete-items-wrapper {
+    max-height: calc(50vh - 20px) !important;
+}
 .p-autocomplete input {
     width: inherit;
     height: 60px;

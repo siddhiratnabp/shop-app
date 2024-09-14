@@ -65,3 +65,21 @@
     align-items: center;
   }
 }
+/* tablet */
+@media screen and (max-width: 680px) {
+  .p-galleria {
+    max-width: 500px !important;
+  }
+}
+/* mobile */
+@media screen and (max-width: 520px) {
+  .p-galleria {
+    max-width: 300px !important;
+  }
+}
+/* mobile */
+@media screen and (max-width: 420px) {
+  .item-detail-info {
+    max-width: 350px;
+  }
+}

@@ -6,13 +6,19 @@ import "./Payment.css";
 import { getDatabase, ref, set, push } from "firebase/database";
 import {ref as storageRef, uploadBytes} from "firebase/storage" ; 
 import { GlobalContext } from "../../context/GlobalState";
+import { Steps } from 'primereact/steps';
 import {app, storage} from '../../firebaseConfig.js';
+import { Message } from 'primereact/message';
+import { Inplace, InplaceDisplay, InplaceContent } from 'primereact/inplace';
+import { Button } from 'primereact/button';
 
-function Payment({toastBottomCenter}) {
+function Payment({buyingStep, setBuyingStep, buyingSteps, toastBottomCenter}) {
     const { cart, orders, clearCart, deviceID } = useContext(GlobalContext);
     const [ ssUploaded, setSSUploaded ] = useState(false);
     const fileUploaderRef = useRef(null);
     const navigate = useNavigate();
+
+    setBuyingStep(2);
 
     
     const downloadQR = () => {
@@ -108,26 +114,42 @@ function Payment({toastBottomCenter}) {
     }
 
     return ( 
-    <>
-        <h3>
-          Payment QR Code: <br />
+    <div className="payment-wrapper">
+        <Steps model={buyingSteps} activeIndex={buyingStep} />
+        <h3 align={"center"}>
+          Payment QR Code <br />
           <button className="item-btn"onClick={downloadQR}>
           <i class="fa fa-download" aria-hidden="true"></i> Download QR 
           </button><br/>
-          <img src="/shop-app/SIDDHI RATNA BHADA PASAL_Qr.png" /><br />
+          <img src="/shop-app/SIDDHI RATNA BHADA PASAL_Qr.png" className="qr-code"/><br />
           Attach and Upload the Screenshot of the Payment Below to Proceed:
           <FileUpload ref={fileUploaderRef} name="demo[]" customUpload uploadHandler={uploadScreenshot} 
           accept="image/*" url="/" maxFileSize={1000000}
           emptyTemplate={<p className="m-0"
           >Drag and drop files to here to upload.</p>}
           />
-          <br />
         </h3>
-        <button className="item-btn" onClick={handleConfirmation}>
-          Proceed to Confirmation
+        <Inplace >
+            <InplaceDisplay><i class="fa-solid fa-question"></i> Don't want to pay the full amount now?</InplaceDisplay>
+            <InplaceContent>
+                <Message  severity="warn" text="You can pay only the shipping charge and we will confirm the order & deliver you the item; rest of the amount can be COD." /><br /><br />
+                <Message severity="success" text="But, we request you to trust us & recommend for full payment. 😊 We are in your service since 60+ years." /><br /><br />
+                <Link to={"/reviews"}>
+                    <Button link>
+                        Want to check our genuine reviews? Click here.
+                    </Button>
+                </Link>
+            </InplaceContent>
+        </Inplace>
+        <br /><br />
+        <button className="item-btn" onClick={handleConfirmation}
+            style={
+              {background:"#4BB543"}
+            }>
+        <i class="fa fa-check"></i> Confirm Order
         </button>
         {/* <Link to="/shop-app/">Shop more!</Link> */}
-    </>
+    </div>
     );
 }
 

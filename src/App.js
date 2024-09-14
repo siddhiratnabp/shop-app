@@ -61,6 +61,11 @@ function App() {
       }
     });
   });
+
+  const showToTopButton = () => {
+    alert("Scrolling")
+    console.log(window.scrollY)
+  }
   
   let [buyingStep, setBuyingStep] = useState(0)
   const buyingSteps = [
@@ -78,17 +83,15 @@ function App() {
   const toastBottomCenter = useRef(null);
 
   return (
-    <div className="App">
+    <div className="App" onScroll={showToTopButton}>
       <BrowserRouter basename="/shop-app">
-        <div>
-          <Navbar />
-        </div>
+        <Navbar />
         <Routes>
           <Route path="/item/:id" element={<ItemDetail />} />
           <Route path="/cart" element={<Cart buyingStep={buyingStep} buyingSteps={buyingSteps} setBuyingStep={setBuyingStep} toastBottomCenter={toastBottomCenter} />} />
           <Route path="/checkout" element={<Checkout buyingStep={buyingStep} setBuyingStep={setBuyingStep} buyingSteps={buyingSteps} toastBottomCenter={toastBottomCenter} />} />
           <Route path="/payment" element={<Payment buyingStep={buyingStep} setBuyingStep={setBuyingStep} buyingSteps={buyingSteps} toastBottomCenter={toastBottomCenter} />} />
-          <Route path="/shop" element={<Shop products={products} />} />
+          <Route path="/shop" element={<Shop products={products} categories={categories} />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/reviews" element={<Reviews />} />
           <Route exact path="" element={<HomePage products={products} categories={categories} />} />

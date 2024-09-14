@@ -1,0 +1,22 @@
+.catSubCatSelect {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.catSubCatSelect .css-b62m3t-container {
+    width: 400px;
+}
+/* mobile devices */
+@media screen and (max-width: 577px) {
+    .catSubCatSelect {
+        flex-direction: column;
+        margin: 0 10px;
+        padding: 0;
+        gap: 5px;
+    }
+    .catSubCatSelect .css-b62m3t-container {
+        max-width: 90%;
+    }
+}

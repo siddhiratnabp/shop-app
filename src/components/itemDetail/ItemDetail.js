@@ -45,6 +45,10 @@ function ItemDetail() {
             numVisible: 3
         },
         {
+            breakpoint: '680px',
+            numVisible: 2
+        },
+        {
             breakpoint: '575px',
             numVisible: 1
         }
@@ -62,7 +66,7 @@ function ItemDetail() {
 
   return (
     <div className="item-detail-container">
-      <Link to="/"> &#8592; Back</Link>
+      <Link to="/shop"> &#8592; Back</Link>
       <div className="item-detail">
         <Galleria value={[
           item["*Product Images1"],
@@ -75,6 +79,7 @@ function ItemDetail() {
           item["Product Images8"]
         ]} responsiveOptions={responsiveOptions} numVisible={5} style={{ maxWidth: '640px' }} 
     item={itemTemplate} thumbnail={thumbnailTemplate} activeIndex={0} />
+    <br />
         <div className="item-detail-info">
           <div className="item-brand" style={{ margin: "0px 10px" }}>
             {item["Category"] + ' > ' + item["Sub Category"]} 

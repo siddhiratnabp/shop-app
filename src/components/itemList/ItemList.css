@@ -1,3 +1,22 @@
 .item-list {
   column-count: 4;
 }
+/* mobile devices */
+@media screen and (max-width: 510px) {
+  .item-list {
+    column-count: 1;
+  }
+}
+/* tablet */
+@media screen and (min-width: 511px) and (max-width: 768px) {
+  .item-list {
+    column-count: 2;
+  }
+}
+/* small pc */
+@media screen and (min-width: 769px) and (max-width: 1000px) {
+  .item-list {
+    column-count: 3;
+  }
+}
+  
