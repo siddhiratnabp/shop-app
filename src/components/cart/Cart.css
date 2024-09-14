@@ -1,8 +1,19 @@
-.cart-container {
-  max-width: 500px;
+/* .cart-container {
+  /* max-width: 500px; */
+  /* min-width: 100%; */
+/* } */
+
+.cart-wrapper {
+  min-height: 80vh;
+  display: grid;
+  place-items: center;
+  margin: auto;
+  width: 80%
 }
 
 .cart-item {
+  display: grid;
+  place-items: center;
   border: 1px solid #cdcdcd;
   text-align: left;
   border-radius: 15px;
@@ -17,4 +28,17 @@
 
 .cart-container button {
   margin-top: 10px;
+}
+
+.item-count {
+  font-size: small;
+}
+
+.cart-price {
+  display: grid;
+  justify-content: center;
+}
+
+.cart-list {
+  width: 80%;
 }

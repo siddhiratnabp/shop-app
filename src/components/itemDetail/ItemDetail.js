@@ -1,58 +1,146 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./ItemDetail.css";
-import items from "../../mockData/items.json";
+// import items from "../../mockData/items.json";
 import { GlobalContext } from "../../context/GlobalState";
+import { get, getDatabase, ref } from "firebase/database";
+import { app } from "../../firebaseConfig";
+import parse from 'html-react-parser';
+import { TabView, TabPanel } from 'primereact/tabview';
+import { Galleria } from 'primereact/galleria';
+import "primeflex/primeflex.css"
+import 'primereact/resources/themes/nano/theme.css'
 
-const getItemDetail = (id) => items.filter((item) => item.id === id)[0];
+
 
 function ItemDetail() {
   const params = useParams();
   const itemId = parseInt(params?.id);
-  const item = !!itemId && getItemDetail(itemId);
-  const { addItemToCartList, cart } = useContext(GlobalContext);
+  const [item, setItem] = useState({});
+  const { addItemToCartList, cart, removeItemFromCartList, setItemCountinCart } = useContext(GlobalContext);
   const [isAdded, setIsAdded] = useState(
     cart.findIndex((c) => c.id === itemId) > -1
   );
+  const itemCartCount = isAdded ? cart.find(obj => obj.id === item.id).count : 0;
+
+  useEffect(() => {
+    const db = getDatabase(app);
+    const dbRef = ref(db, `products/${itemId}`);
+    get(dbRef).then((snapshot) => {
+      if (snapshot.exists()) {
+        if (snapshot.val() !== undefined) {
+          setItem(snapshot.val())
+        }
+      }
+    });
+  }, [])
+
+    const responsiveOptions = [
+        {
+            breakpoint: '1125px',
+            numVisible: 4
+        },
+        {
+            breakpoint: '767px',
+            numVisible: 3
+        },
+        {
+            breakpoint: '680px',
+            numVisible: 2
+        },
+        {
+            breakpoint: '575px',
+            numVisible: 1
+        }
+    ];
+
+
+    const itemTemplate = (item) => {
+        return <img src={item} alt={item} style={{ width: '100%' }} />
+    }
+
+    const thumbnailTemplate = (item) => {
+        return <img src={item} alt={item} style={{width: '100px'}} />
+    }
+
 
   return (
     <div className="item-detail-container">
-      <Link to="/"> &#8592; Back</Link>
+      <Link to="/shop"> &#8592; Back</Link>
       <div className="item-detail">
-        <div className="item-detail-image">
-          <img src={item.image} alt={"Item image"} />
-        </div>
+        <Galleria value={[
+          item["*Product Images1"],
+          item["Product Images2"],
+          item["Product Images3"],
+          item["Product Images4"],
+          item["Product Images5"],
+          item["Product Images6"],
+          item["Product Images7"],
+          item["Product Images8"]
+        ]} responsiveOptions={responsiveOptions} numVisible={5} style={{ maxWidth: '640px' }} 
+    item={itemTemplate} thumbnail={thumbnailTemplate} activeIndex={0} />
+    <br />
         <div className="item-detail-info">
           <div className="item-brand" style={{ margin: "0px 10px" }}>
-            {item.brand}
+            {item["Category"] + ' > ' + item["Sub Category"]} 
           </div>
-          <div className="item-name">{item.name}</div>
-          <div className="item-price">${item.price}</div>
-
-          <select className="item-size">
-            <option value={"S"}> Select size (S)</option>
-            <option value={"M"}> Select size (M)</option>
-            <option value={"L"}> Select size (L)</option>
-            <option value={"XL"}> Select size (XL)</option>
-          </select>
+          <div className="item-name">{item["Product Name(English)"]}</div>
+          <div className="item-price">Rs. {item["Actual Price"]}</div>
           <button
             className="item-btn"
-            disabled={isAdded}
+            style={
+              {background:"#4BB543"}
+            }
             onClick={() => {
               addItemToCartList(item);
               setIsAdded(true);
             }}
           >
-            {isAdded ? <Link to="/cart">Go to Cart</Link> : "Add To bag"}
+            {isAdded ? "Add more (+)" : (<><span>Add To Cart <i class='fas fa-shopping-cart'></i></span></>)}
           </button>
-          <p className="item-description">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged.
-          </p>
+          {
+            isAdded ? <span>
+              <input type="text" value={itemCartCount} className="item-cart-count" 
+              onChange = {(e) => {
+                let value = e.target.value;
+                if(isNaN(value)) {return}
+                if(Number(e.target.value) === 0) {setIsAdded(false)}
+                setItemCountinCart({
+                  item: item,
+                  cartCount: e.target.value
+                })
+              }}
+              />
+              <button className="item-btn" style={{ width: '40px', marginLeft: '5px', background: '#de450a'}}
+              onClick = {() => {
+                removeItemFromCartList(item);
+                if(itemCartCount === 1) {setIsAdded(false) };
+              }}>
+                -
+              </button> <button
+                className="item-btn"><Link to="/cart">Go to Cart <i class='fas fa-shopping-cart'></i></Link></button></span>
+              : ""
+          }
+          <br /><br />
+        <div className="card">
+          <TabView>
+            <TabPanel header="Highlights">
+              {parse(item["Highlights"] ? item["Highlights"] : "")}
+            </TabPanel>
+            <TabPanel header="Main Description">
+              {parse(item["Main Description"] ? item["Main Description"] : "")}
+            </TabPanel>
+            <TabPanel header="Shipping Attributes">
+              <b>These are only the shipping attributes. Please find the product height width in Highlights tab.</b>
+              <ul>
+                <li>Package Weight (approx.): {item["Package Weight"]}</li>
+                <li>Package Length: {item["Package Length"]}</li>
+                <li>Package Width: {item["Package Weight"]}</li>
+                <li>Package Height: {item["Package Height"]}</li>
+              </ul>
+            </TabPanel>
+          </TabView>
+        </div>
         </div>
       </div>
     </div>

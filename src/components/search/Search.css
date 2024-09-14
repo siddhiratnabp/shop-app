@@ -1,0 +1,69 @@
+:root {
+    --searchbox-width: 500px;
+    --searchbox-tablet-width: 300px;
+    --searchbox-mobile-width: 200px;
+}
+
+.search-box {
+    display: block;
+}
+.p-autocomplete {
+    display: block;
+    margin: auto;
+    width: var(--searchbox-width);
+}
+.p-autocomplete-panel {
+    height: 50vh !important;
+}
+.p-autocomplete-items-wrapper {
+    max-height: calc(50vh - 20px) !important;
+}
+.p-autocomplete input {
+    width: inherit;
+    height: 60px;
+    padding-left: 35px;
+}
+.fa-magnifying-glass {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    transform: translateY(-50%);
+    left: calc(50% - var(--searchbox-width)/2 + 10px);
+}
+.search-box {
+    position: relative;
+}
+.p-autocomplete-panel .flex-1 .font-bold {
+    display: block !important;
+    max-width: 90% !important;
+    text-wrap: wrap;
+}
+.p-autocomplete-panel {
+    width: 100vw;
+    left: 0;
+    top: 0;
+}
+/* mobile devices */
+@media screen and (max-width: 510px) {
+    .p-autocomplete {
+        width: var(--searchbox-mobile-width);
+    }    
+    .p-autocomplete input {
+        height: 40px;
+    }
+    .fa-magnifying-glass {
+        left: calc(50% - var(--searchbox-mobile-width)/2 + 10px);
+    }
+  }
+  /* tablet */
+  @media screen and (min-width: 511px) and (max-width: 768px) {
+    .p-autocomplete {
+        width: var(--searchbox-tablet-width);
+    }
+    .p-autocomplete input {
+        height: 40px;
+    }    
+    .fa-magnifying-glass {
+        left: calc(50% - var(--searchbox-tablet-width)/2 + 10px);
+    }
+  }

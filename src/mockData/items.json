@@ -1,243 +1,263 @@
 [
   {
     "id": 1,
-    "name": "curabitur",
+    "name": "Stylish Maxi Dress",
     "brand": "Osinski Inc",
     "size": "XS",
-    "occasion": "mattis",
+    "occasion": "Casual",
     "color": "#6cb58f",
     "saleDiscount": 22,
     "price": 27.33,
     "rating": 3,
-    "image": "/assets/caio-coelho-xFmXLq_KJxg-unsplash.jpg"
+    "image": "https://static-01.daraz.com.np/p/32f62bc332603f5077664ee2c667097b.png",
+    "weight": 0.42
   },
   {
     "id": 2,
-    "name": "nonummy maecenas",
+    "name": "Elegant Evening Gown",
     "brand": "Sporer and Sons",
     "size": "S",
-    "occasion": "odio",
+    "occasion": "Formal",
     "color": "#af294b",
     "saleDiscount": 28,
     "price": 20.96,
     "rating": 1,
-    "image": "/assets/chris-lynch-pRdi2no2fvs-unsplash.jpg"
+    "image": "/assets/chris-lynch-pRdi2no2fvs-unsplash.jpg",
+    "weight": 0.57
   },
   {
     "id": 3,
-    "name": "praesent id",
+    "name": "Classic Trench Coat",
     "brand": "Feeney-Bogisich",
     "size": "XL",
-    "occasion": "bibendum",
+    "occasion": "Business",
     "color": "#c8a971",
     "saleDiscount": 22,
     "price": 13.82,
     "rating": 2,
-    "image": "/assets/benjamin-rascoe-KF-q_SGqswg-unsplash.jpg"
+    "image": "/assets/benjamin-rascoe-KF-q_SGqswg-unsplash.jpg",
+    "weight": 0.78
   },
   {
     "id": 4,
-    "name": "in blandit",
+    "name": "Casual Summer T-Shirt",
     "brand": "Walter-Christiansen",
     "size": "L",
-    "occasion": "quisque",
+    "occasion": "Casual",
     "color": "#5fcd16",
     "saleDiscount": 41,
     "price": 43.75,
     "rating": 4,
-    "image": "/assets/phil-monte-4V4t0JcOM5E-unsplash.jpg"
+    "image": "/assets/phil-monte-4V4t0JcOM5E-unsplash.jpg",
+    "weight": 0.31
   },
   {
     "id": 5,
-    "name": "tellus nisi",
+    "name": "Elegant Silk Scarf",
     "brand": "Champlin-Jerde",
     "size": "M",
-    "occasion": "dui",
+    "occasion": "Formal",
     "color": "#e969c0",
     "saleDiscount": 21,
     "price": 27.9,
     "rating": 4,
-    "image": "/assets/dami-adebayo-k6aQzmIbR1s-unsplash.jpg"
+    "image": "/assets/dami-adebayo-k6aQzmIbR1s-unsplash.jpg",
+    "weight": 0.18
   },
   {
     "id": 6,
-    "name": "malesuada",
+    "name": "Stylish Leather Jacket",
     "brand": "Weissnat-Veum",
     "size": "XL",
-    "occasion": "sapien",
+    "occasion": "Casual",
     "color": "#fb375e",
     "saleDiscount": 26,
     "price": 56.76,
     "rating": 2,
-    "image": "/assets/irene-kredenets-dwKiHoqqxk8-unsplash.jpg"
+    "image": "/assets/irene-kredenets-dwKiHoqqxk8-unsplash.jpg",
+    "weight": 0.95
   },
   {
     "id": 7,
-    "name": "rutrum nulla",
+    "name": "Elegant Black Dress",
     "brand": "Ryan-Ernser",
     "size": "L",
-    "occasion": "nulla",
+    "occasion": "Formal",
     "color": "#2da567",
     "saleDiscount": 38,
     "price": 77.42,
     "rating": 2,
-    "image": "/assets/freestocks-8hAsLeE6Fbo-unsplash.jpg"
+    "image": "/assets/freestocks-8hAsLeE6Fbo-unsplash.jpg",
+    "weight": 0.62
   },
   {
     "id": 8,
-    "name": "lacus",
+    "name": "Casual Denim Jacket",
     "brand": "Greenholt, Torp and Grady",
     "size": "XS",
-    "occasion": "nullam",
+    "occasion": "Casual",
     "color": "#060571",
     "saleDiscount": 50,
     "price": 47.31,
     "rating": 5,
-    "image": "/assets/revolt-164_6wVEHfI-unsplash.jpg"
+    "image": "/assets/revolt-164_6wVEHfI-unsplash.jpg",
+    "weight": 1.02
   },
   {
     "id": 9,
-    "name": "quis odio",
+    "name": "Classic White Shirt",
     "brand": "Cassin and Sons",
     "size": "XL",
-    "occasion": "morbi",
+    "occasion": "Business",
     "color": "#3f79e3",
     "saleDiscount": 24,
     "price": 58.31,
     "rating": 2,
-    "image": "/assets/faith-yarn-Wr0TpKqf26s-unsplash.jpg"
+    "image": "/assets/faith-yarn-Wr0TpKqf26s-unsplash.jpg",
+    "weight": 0.29
   },
   {
     "id": 10,
-    "name": "congue",
+    "name": "Elegant Evening Dress",
     "brand": "Mann-Wyman",
     "size": "2XL",
-    "occasion": "et",
+    "occasion": "Formal",
     "color": "#d8e3fb",
     "saleDiscount": 42,
     "price": 77.64,
     "rating": 1,
-    "image": "/assets/dom-hill-nimElTcTNyY-unsplash.jpg"
+    "image": "/assets/dom-hill-nimElTcTNyY-unsplash.jpg",
+    "weight": 0.66
   },
   {
     "id": 11,
-    "name": "diam",
+    "name": "Casual Turtleneck Sweater",
     "brand": "Kreiger-Kunde",
     "size": "L",
-    "occasion": "ac",
+    "occasion": "Casual",
     "color": "#f737da",
     "saleDiscount": 10,
     "price": 75.2,
     "rating": 2,
-    "image": "/assets/caio-coelho-xFmXLq_KJxg-unsplash.jpg"
+    "image": "/assets/caio-coelho-xFmXLq_KJxg-unsplash.jpg",
+    "weight": 0.55
   },
   {
     "id": 12,
-    "name": "orci mauris",
+    "name": "Formal Blazer",
     "brand": "O'Conner-Fahey",
     "size": "2XL",
-    "occasion": "faucibus",
+    "occasion": "Business",
     "color": "#d07c7e",
     "saleDiscount": 31,
     "price": 42.75,
     "rating": 4,
-    "image": "/assets/chris-lynch-pRdi2no2fvs-unsplash.jpg"
+    "image": "/assets/chris-lynch-pRdi2no2fvs-unsplash.jpg",
+    "weight": 0.87
   },
   {
     "id": 13,
-    "name": "mauris",
+    "name": "Silk Tie",
     "brand": "Shanahan, Orn and Hessel",
     "size": "M",
-    "occasion": "tincidunt",
+    "occasion": "Business",
     "color": "#e140d0",
     "saleDiscount": 25,
     "price": 16.53,
     "rating": 1,
-    "image": "/assets/dami-adebayo-k6aQzmIbR1s-unsplash.jpg"
+    "image": "/assets/dami-adebayo-k6aQzmIbR1s-unsplash.jpg",
+    "weight": 0.08
   },
   {
     "id": 14,
-    "name": "ut mauris",
+    "name": "Formal Suit",
     "brand": "Schmitt, Rodriguez and Ratke",
     "size": "3XL",
-    "occasion": "rutrum",
+    "occasion": "Business",
     "color": "#ad699f",
     "saleDiscount": 44,
     "price": 76.82,
     "rating": 1,
-    "image": "/assets/phil-monte-4V4t0JcOM5E-unsplash.jpg"
+    "image": "/assets/phil-monte-4V4t0JcOM5E-unsplash.jpg",
+    "weight": 1.24
   },
   {
     "id": 15,
-    "name": "non",
+    "name": "Casual Polo Shirt",
     "brand": "Schmitt LLC",
     "size": "M",
-    "occasion": "congue",
+    "occasion": "Casual",
     "color": "#7ebd58",
     "saleDiscount": 21,
     "price": 32.38,
     "rating": 5,
-    "image": "/assets/freestocks-8hAsLeE6Fbo-unsplash.jpg"
+    "image": "/assets/freestocks-8hAsLeE6Fbo-unsplash.jpg",
+    "weight": 0.35
   },
   {
     "id": 16,
-    "name": "pede",
+    "name": "Winter Coat",
     "brand": "Lindgren-Abshire",
     "size": "2XL",
-    "occasion": "nibh",
+    "occasion": "Casual",
     "color": "#bdf1ad",
     "saleDiscount": 39,
     "price": 66.82,
     "rating": 5,
-    "image": "/assets/irene-kredenets-dwKiHoqqxk8-unsplash.jpg"
+    "image": "/assets/irene-kredenets-dwKiHoqqxk8-unsplash.jpg",
+    "weight": 1.35
   },
   {
     "id": 17,
-    "name": "tristique",
+    "name": "Stylish Blouse",
     "brand": "Sipes, Anderson and Kuhlman",
     "size": "M",
-    "occasion": "sit",
+    "occasion": "Business",
     "color": "#81d2d1",
     "saleDiscount": 13,
     "price": 42.37,
     "rating": 1,
-    "image": "/assets/faith-yarn-Wr0TpKqf26s-unsplash.jpg"
+    "image": "/assets/faith-yarn-Wr0TpKqf26s-unsplash.jpg",
+    "weight": 0.27
   },
   {
     "id": 18,
-    "name": "donec",
+    "name": "Casual Joggers",
     "brand": "Witting and Sons",
     "size": "L",
-    "occasion": "sodales",
+    "occasion": "Casual",
     "color": "#20ff62",
     "saleDiscount": 46,
     "price": 27.23,
     "rating": 4,
-    "image": "/assets/revolt-164_6wVEHfI-unsplash.jpg"
+    "image": "/assets/revolt-164_6wVEHfI-unsplash.jpg",
+    "weight": 0.61
   },
   {
     "id": 19,
-    "name": "vel accumsan",
+    "name": "Summer Dress",
     "brand": "Littel, Kerluke and Adams",
     "size": "M",
-    "occasion": "morbi",
+    "occasion": "Casual",
     "color": "#cce701",
     "saleDiscount": 30,
     "price": 11.2,
     "rating": 4,
-    "image": "/assets/dom-hill-nimElTcTNyY-unsplash.jpg"
+    "image": "/assets/dom-hill-nimElTcTNyY-unsplash.jpg",
+    "weight": 0.39
   },
   {
     "id": 20,
-    "name": "lacinia",
+    "name": "Casual Hoodie",
     "brand": "Grant, O'Kon and Pacocha",
     "size": "3XL",
-    "occasion": "sapien",
-    "color": "#a51fc5",
-    "saleDiscount": 23,
-    "price": 49.66,
+    "occasion": "Casual",
+    "color": "#4c6fbb",
+    "saleDiscount": 32,
+    "price": 68.9,
     "rating": 3,
-    "image": "/assets/benjamin-rascoe-KF-q_SGqswg-unsplash.jpg"
+    "image": "/assets/caio-coelho-xFmXLq_KJxg-unsplash.jpg",
+    "weight": 0.74
   },
   {
     "id": 21,
@@ -249,7 +269,8 @@
     "saleDiscount": 25,
     "price": 70.76,
     "rating": 5,
-    "image": "/assets/dami-adebayo-k6aQzmIbR1s-unsplash.jpg"
+    "image": "/assets/dami-adebayo-k6aQzmIbR1s-unsplash.jpg",
+    "weight": 0.85
   },
   {
     "id": 22,
@@ -261,7 +282,8 @@
     "saleDiscount": 15,
     "price": 52.82,
     "rating": 5,
-    "image": "/assets/caio-coelho-xFmXLq_KJxg-unsplash.jpg"
+    "image": "/assets/caio-coelho-xFmXLq_KJxg-unsplash.jpg",
+    "weight": 0.73
   },
   {
     "id": 23,
@@ -273,7 +295,8 @@
     "saleDiscount": 13,
     "price": 16.6,
     "rating": 3,
-    "image": "/assets/chris-lynch-pRdi2no2fvs-unsplash.jpg"
+    "image": "/assets/chris-lynch-pRdi2no2fvs-unsplash.jpg",
+    "weight": 0.41
   },
   {
     "id": 24,
@@ -285,7 +308,8 @@
     "saleDiscount": 12,
     "price": 54.99,
     "rating": 4,
-    "image": "/assets/phil-monte-4V4t0JcOM5E-unsplash.jpg"
+    "image": "/assets/phil-monte-4V4t0JcOM5E-unsplash.jpg",
+    "weight": 0.92
   },
   {
     "id": 25,
@@ -297,7 +321,8 @@
     "saleDiscount": 24,
     "price": 19.43,
     "rating": 4,
-    "image": "/assets/freestocks-8hAsLeE6Fbo-unsplash.jpg"
+    "image": "/assets/freestocks-8hAsLeE6Fbo-unsplash.jpg",
+    "weight": 0.35
   },
   {
     "id": 26,
@@ -309,7 +334,8 @@
     "saleDiscount": 13,
     "price": 66.07,
     "rating": 1,
-    "image": "/assets/irene-kredenets-dwKiHoqqxk8-unsplash.jpg"
+    "image": "/assets/irene-kredenets-dwKiHoqqxk8-unsplash.jpg",
+    "weight": 0.68
   },
   {
     "id": 27,
@@ -321,7 +347,8 @@
     "saleDiscount": 22,
     "price": 38.88,
     "rating": 5,
-    "image": "/assets/faith-yarn-Wr0TpKqf26s-unsplash.jpg"
+    "image": "/assets/faith-yarn-Wr0TpKqf26s-unsplash.jpg",
+    "weight": 0.76
   },
   {
     "id": 28,
@@ -333,7 +360,8 @@
     "saleDiscount": 31,
     "price": 32.06,
     "rating": 3,
-    "image": "/assets/revolt-164_6wVEHfI-unsplash.jpg"
+    "image": "/assets/revolt-164_6wVEHfI-unsplash.jpg",
+    "weight": 0.83
   },
   {
     "id": 29,
@@ -345,7 +373,8 @@
     "saleDiscount": 14,
     "price": 70.11,
     "rating": 3,
-    "image": "/assets/dom-hill-nimElTcTNyY-unsplash.jpg"
+    "image": "/assets/dom-hill-nimElTcTNyY-unsplash.jpg",
+    "weight": 0.52
   },
   {
     "id": 30,
@@ -357,7 +386,8 @@
     "saleDiscount": 34,
     "price": 55.11,
     "rating": 2,
-    "image": "/assets/dom-hill-nimElTcTNyY-unsplash.jpg"
+    "image": "/assets/dom-hill-nimElTcTNyY-unsplash.jpg",
+    "weight": 0.89
   },
   {
     "id": 31,
@@ -369,7 +399,8 @@
     "saleDiscount": 22,
     "price": 11.81,
     "rating": 2,
-    "image": "/assets/dami-adebayo-k6aQzmIbR1s-unsplash.jpg"
+    "image": "/assets/dami-adebayo-k6aQzmIbR1s-unsplash.jpg",
+    "weight": 0.47
   },
   {
     "id": 32,
@@ -381,7 +412,8 @@
     "saleDiscount": 25,
     "price": 39.83,
     "rating": 1,
-    "image": "/assets/caio-coelho-xFmXLq_KJxg-unsplash.jpg"
+    "image": "/assets/caio-coelho-xFmXLq_KJxg-unsplash.jpg",
+    "weight": 0.74
   },
   {
     "id": 33,
@@ -393,7 +425,8 @@
     "saleDiscount": 29,
     "price": 28.16,
     "rating": 2,
-    "image": "/assets/benjamin-rascoe-KF-q_SGqswg-unsplash.jpg"
+    "image": "/assets/benjamin-rascoe-KF-q_SGqswg-unsplash.jpg",
+    "weight": 0.38
   },
   {
     "id": 34,
@@ -405,7 +438,8 @@
     "saleDiscount": 39,
     "price": 67.85,
     "rating": 2,
-    "image": "/assets/phil-monte-4V4t0JcOM5E-unsplash.jpg"
+    "image": "/assets/phil-monte-4V4t0JcOM5E-unsplash.jpg",
+    "weight": 0.63
   },
   {
     "id": 35,
@@ -417,7 +451,8 @@
     "saleDiscount": 43,
     "price": 66.74,
     "rating": 5,
-    "image": "/assets/irene-kredenets-dwKiHoqqxk8-unsplash.jpg"
+    "image": "/assets/irene-kredenets-dwKiHoqqxk8-unsplash.jpg",
+    "weight": 0.48
   },
   {
     "id": 36,
@@ -429,7 +464,8 @@
     "saleDiscount": 24,
     "price": 61.13,
     "rating": 1,
-    "image": "/assets/freestocks-8hAsLeE6Fbo-unsplash.jpg"
+    "image": "/assets/freestocks-8hAsLeE6Fbo-unsplash.jpg",
+    "weight": 0.77
   },
   {
     "id": 37,
@@ -441,7 +477,8 @@
     "saleDiscount": 42,
     "price": 57.41,
     "rating": 2,
-    "image": "/assets/faith-yarn-Wr0TpKqf26s-unsplash.jpg"
+    "image": "/assets/faith-yarn-Wr0TpKqf26s-unsplash.jpg",
+    "weight": 0.92
   },
   {
     "id": 38,
@@ -453,138 +490,33 @@
     "saleDiscount": 29,
     "price": 75.1,
     "rating": 2,
-    "image": "/assets/revolt-164_6wVEHfI-unsplash.jpg"
+    "image": "/assets/revolt-164_6wVEHfI-unsplash.jpg",
+    "weight": 0.55
   },
   {
     "id": 39,
-    "name": "tempor",
-    "brand": "Schamberger-Morar",
-    "size": "XL",
-    "occasion": "fusce",
-    "color": "#df1245",
-    "saleDiscount": 19,
-    "price": 52.36,
-    "rating": 5,
-    "image": "/assets/dom-hill-nimElTcTNyY-unsplash.jpg"
+    "name": "pellentesque at",
+    "brand": "Volkman, Treutel and Hayes",
+    "size": "XS",
+    "occasion": "orci",
+    "color": "#17b27f",
+    "saleDiscount": 25,
+    "price": 30.73,
+    "rating": 1,
+    "image": "/assets/dom-hill-nimElTcTNyY-unsplash.jpg",
+    "weight": 0.66
   },
   {
     "id": 40,
-    "name": "nullam molestie",
-    "brand": "Harris LLC",
-    "size": "3XL",
-    "occasion": "consequat",
-    "color": "#004d76",
-    "saleDiscount": 24,
-    "price": 47.51,
+    "name": "nonummy",
+    "brand": "Hansen, Stehr and Bailey",
+    "size": "XS",
+    "occasion": "pretium",
+    "color": "#e84c4e",
+    "saleDiscount": 16,
+    "price": 38.95,
     "rating": 5,
-    "image": "/assets/dom-hill-nimElTcTNyY-unsplash.jpg"
-  },
-  {
-    "id": 41,
-    "name": "blandit",
-    "brand": "Skiles, Wiegand and Conroy",
-    "size": "L",
-    "occasion": "ipsum",
-    "color": "#6a03fc",
-    "saleDiscount": 44,
-    "price": 20.61,
-    "rating": 1,
-    "image": "/assets/dami-adebayo-k6aQzmIbR1s-unsplash.jpg"
-  },
-  {
-    "id": 42,
-    "name": "ultricies",
-    "brand": "O'Hara-Boyle",
-    "size": "S",
-    "occasion": "volutpat",
-    "color": "#1131d0",
-    "saleDiscount": 33,
-    "price": 60.36,
-    "rating": 2,
-    "image": "/assets/phil-monte-4V4t0JcOM5E-unsplash.jpg"
-  },
-  {
-    "id": 43,
-    "name": "curae",
-    "brand": "Ryan-Schmitt",
-    "size": "XL",
-    "occasion": "dui",
-    "color": "#32b09d",
-    "saleDiscount": 12,
-    "price": 13.87,
-    "rating": 3,
-    "image": "/assets/chris-lynch-pRdi2no2fvs-unsplash.jpg"
-  },
-  {
-    "id": 44,
-    "name": "mollis molestie",
-    "brand": "Lowe, Gislason and Orn",
-    "size": "S",
-    "occasion": "nibh",
-    "color": "#22b478",
-    "saleDiscount": 20,
-    "price": 10.47,
-    "rating": 5,
-    "image": "/assets/caio-coelho-xFmXLq_KJxg-unsplash.jpg"
-  },
-  {
-    "id": 45,
-    "name": "augue luctus",
-    "brand": "Harvey-Beier",
-    "size": "2XL",
-    "occasion": "nunc",
-    "color": "#962152",
-    "saleDiscount": 49,
-    "price": 41.01,
-    "rating": 1,
-    "image": "/assets/irene-kredenets-dwKiHoqqxk8-unsplash.jpg"
-  },
-  {
-    "id": 46,
-    "name": "elementum",
-    "brand": "Swaniawski, Kshlerin and Stiedemann",
-    "size": "S",
-    "occasion": "ut",
-    "color": "#86ba3e",
-    "saleDiscount": 25,
-    "price": 10.15,
-    "rating": 5,
-    "image": "/assets/freestocks-8hAsLeE6Fbo-unsplash.jpg"
-  },
-  {
-    "id": 47,
-    "name": "id justo",
-    "brand": "Haley Inc",
-    "size": "3XL",
-    "occasion": "ultrices",
-    "color": "#b5c411",
-    "saleDiscount": 22,
-    "price": 46.23,
-    "rating": 3,
-    "image": "/assets/benjamin-rascoe-KF-q_SGqswg-unsplash.jpg"
-  },
-  {
-    "id": 48,
-    "name": "in est",
-    "brand": "Brown, Wolff and Gaylord",
-    "size": "3XL",
-    "occasion": "ut",
-    "color": "#f33a23",
-    "saleDiscount": 47,
-    "price": 67.68,
-    "rating": 4,
-    "image": "/assets/revolt-164_6wVEHfI-unsplash.jpg"
-  },
-  {
-    "id": 49,
-    "name": "est",
-    "brand": "Jast, Gutkowski and Flatley",
-    "size": "3XL",
-    "occasion": "sit",
-    "color": "#b1c3e6",
-    "saleDiscount": 32,
-    "price": 55.33,
-    "rating": 4,
-    "image": "/assets/chris-lynch-pRdi2no2fvs-unsplash.jpg"
+    "image": "/assets/dom-hill-nimElTcTNyY-unsplash.jpg",
+    "weight": 0.74
   }
 ]
