@@ -1,5 +1,12 @@
-.cart-container {
-  max-width: 500px;
+/* .cart-container {
+  /* max-width: 500px; */
+  /* min-width: 100%; */
+/* } */
+
+.cart-wrapper {
+  min-height: 80vh;
+  display: grid;
+  justify-content: center;
 }
 
 .cart-item {
@@ -21,4 +28,9 @@
 
 .item-count {
   font-size: small;
+}
+
+.cart-price {
+  display: grid;
+  justify-content: center;
 }

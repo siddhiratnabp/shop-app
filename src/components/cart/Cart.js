@@ -12,8 +12,9 @@ function Cart({buyingStep, buyingSteps, setBuyingStep}) {
 
   return (
     <div className="cart-container">
+      <div className="cart-wrapper">
       <Steps model={buyingSteps} activeIndex={buyingStep} />
-      <h1>Cart</h1>
+      <div><h1>Cart</h1></div>
       {!cart.length ? (
         <p>No Item Added! Please add something to your cart</p>
       ) : (
@@ -45,15 +46,17 @@ function Cart({buyingStep, buyingSteps, setBuyingStep}) {
               </div>
             ))}
           </div>
-          <br />{cart.forEach((item) => {
+          <div className="cart-price"><br />{cart.forEach((item) => {
             total += Math.round(item.price * item.count)
             totalWeight += item.weight * item.count
           })}Rs. {total} & {totalWeight.toFixed(2)} kgs <br />
           <Link to="/checkout">
             <button className="item-btn">Next</button>
           </Link>
+          </div>
         </>
       )}
+      </div>
     </div>
   );
 }

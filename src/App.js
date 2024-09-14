@@ -93,6 +93,7 @@ function App() {
         </Routes>
       </BrowserRouter>
       <TawkMessengerReact
+        className="twak"
         propertyId="66caea3150c10f7a00a02ce5"
         widgetId="1i64a5kof"/>
       <Toast ref={toastBottomCenter} position="bottom-center"/>
