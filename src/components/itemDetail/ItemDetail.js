@@ -37,7 +37,7 @@ function ItemDetail() {
 
     const responsiveOptions = [
         {
-            breakpoint: '991px',
+            breakpoint: '1125px',
             numVisible: 4
         },
         {

@@ -53,7 +53,9 @@ function HomePage({products, categories}) {
   };
 
   useEffect(() => {
-    
+    products.sort((product1, product2) => {
+      return product1["Carousel Index"] - product2["Carousel Index"]
+    })
   }, [products])
 
   

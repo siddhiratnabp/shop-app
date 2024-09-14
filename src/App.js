@@ -14,6 +14,7 @@ import { GlobalContext } from "./context/GlobalState";
 import { Toast } from 'primereact/toast';
 import { get, getDatabase, ref, limitToFirst, query, limitToLast, push } from "firebase/database";
 import { app } from "./firebaseConfig";
+import Reviews from "./components/reviews/Reviews";
 
 
 function App() {
@@ -89,6 +90,7 @@ function App() {
           <Route path="/payment" element={<Payment buyingStep={buyingStep} setBuyingStep={setBuyingStep} buyingSteps={buyingSteps} toastBottomCenter={toastBottomCenter} />} />
           <Route path="/shop" element={<Shop products={products} />} />
           <Route path="/orders" element={<Orders />} />
+          <Route path="/reviews" element={<Reviews />} />
           <Route exact path="" element={<HomePage products={products} categories={categories} />} />
         </Routes>
       </BrowserRouter>
