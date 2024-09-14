@@ -1,11 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./ItemDetail.css";
-import items from "../../mockData/items.json";
+// import items from "../../mockData/items.json";
 import { GlobalContext } from "../../context/GlobalState";
-import { get, getDatabase, ref, limitToFirst, query, limitToLast } from "firebase/database";
+import { get, getDatabase, ref } from "firebase/database";
 import { app } from "../../firebaseConfig";
-
+import parse from 'html-react-parser';
+import { TabView, TabPanel } from 'primereact/tabview';
+import { Galleria } from 'primereact/galleria';
 
 
 
@@ -31,14 +33,37 @@ function ItemDetail() {
     });
   }, [])
 
+    const responsiveOptions = [
+        {
+            breakpoint: '991px',
+            numVisible: 4
+        },
+        {
+            breakpoint: '767px',
+            numVisible: 3
+        },
+        {
+            breakpoint: '575px',
+            numVisible: 1
+        }
+    ];
+
+
+    const itemTemplate = (item) => {
+        return <img src={item} alt={item} style={{ width: '100%' }} />
+    }
+
+    const thumbnailTemplate = (item) => {
+        return <img src={item} alt={item} style={{width: '100px'}} />
+    }
+
 
   return (
     <div className="item-detail-container">
       <Link to="/"> &#8592; Back</Link>
       <div className="item-detail">
-        <div className="item-detail-image">
-          <img src={item["*Product Images1"]} alt={"Item image"} />
-        </div>
+        <Galleria value={[item["**Product Images1"], item["Product Images2"]]} responsiveOptions={responsiveOptions} numVisible={5} style={{ maxWidth: '640px' }} 
+    item={itemTemplate} thumbnail={thumbnailTemplate} activeIndex={0} />
         <div className="item-detail-info">
           <div className="item-brand" style={{ margin: "0px 10px" }}>
             {item["Category"] + ' > ' + item["Sub Category"]} 
@@ -89,9 +114,22 @@ function ItemDetail() {
           }
 
 
-          <p className="item-description">
-            {item["Highlights"]}
-          </p>
+<TabView>
+                <TabPanel header="Highlights">
+                 {item["Highlights"]}
+                </TabPanel>
+                <TabPanel header="Main Description">
+                 {item["Main Description"]}
+                </TabPanel>
+                <TabPanel header="Header III">
+                    <p className="m-0">
+                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti 
+                        quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in
+                        culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. 
+                        Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.
+                    </p>
+                </TabPanel>
+            </TabView>
         </div>
       </div>
     </div>

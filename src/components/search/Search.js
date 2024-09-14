@@ -61,7 +61,7 @@ function Search ({products, categories}) {
                             <span>{item.label}</span>
                         </div>
                     </div>
-                    <span className="font-bold text-900">Rs. {item["Price"]}</span>
+                    <span className="font-bold text-900">Rs. {item["Actual Price"]}</span>
                     <Button label="Buy" severity="success" onClick={() => {
                         // addItemToCartList({ name, rating, price, saleDiscount, image, brand, id, weight });
                         navigate("/cart");

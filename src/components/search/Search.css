@@ -27,7 +27,11 @@
 .search-box {
     position: relative;
 }
-
+.p-autocomplete-panel .flex-1 .font-bold {
+    display: block !important;
+    max-width: 90% !important;
+    text-wrap: wrap;
+}
 .p-autocomplete-panel {
     width: 100vw;
     left: 0;

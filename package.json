@@ -12,6 +12,7 @@
     "firebase": "^10.13.1",
     "gapi-script": "^1.2.0",
     "googleapis": "^142.0.0",
+    "html-react-parser": "^5.1.16",
     "primeflex": "^3.3.1",
     "primereact": "^10.8.2",
     "react": "^18.3.1",
