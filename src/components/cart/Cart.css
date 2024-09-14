@@ -1,64 +1,44 @@
-import React, { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { GlobalContext } from "../../context/GlobalState";
-import "./Cart.css";
-import { Steps } from 'primereact/steps';
+/* .cart-container {
+  /* max-width: 500px; */
+  /* min-width: 100%; */
+/* } */
 
-function Cart({buyingStep, buyingSteps, setBuyingStep}) {
-  const { addItemToCartList, cart, removeItemFromCartList } = useContext(GlobalContext);
-  let total = 0
-  let totalWeight = 0
-  setBuyingStep(0);
-
-  return (
-    <div className="cart-container">
-      <div className="cart-wrapper">
-      <Steps model={buyingSteps} activeIndex={buyingStep} />
-      <div><h1>Cart</h1></div>
-      {!cart.length ? (
-        <p>No Item Added! Please add something to your cart</p>
-      ) : (
-        <>
-          <div className="cart-list">
-            {
-              cart.map((item) => (
-                <div className="cart-item" key={item.id}>
-                <img src={item.image} style={{maxWidth: "25%"}} />
-                <div className="item-price">Rs. {item.price} <span className="item-count">
-                  <button onClick={()=>{addItemToCartList(item)}}
-                  style={{background: "#343434", padding: "2px", color: "white"}}>
-                    +
-                  </button> x {item.count} item(s) 
-                  <button onClick={()=>{removeItemFromCartList(item)}}
-                  style={{background: "#343434", padding: "2px", color: "white"}}>
-                    -
-                  </button> 
-                </span>
-                 = <strong>Rs. {Math.round(item.price * item.count)}</strong>
-                </div>
-                <div style={{float: 'right'}}>{(item.weight * item.count).toFixed(2)} kgs</div>
-                <Link to={`/item/${item.id}`} key={item.id}>
-                  <div className="item-name">{item.name}</div>
-                  <div className="item-expectedDelivery">
-                    (Expected Delivery 3 - 6 days)
-                  </div>
-                </Link>
-              </div>
-            ))}
-          </div>
-          <div className="cart-price"><br />{cart.forEach((item) => {
-            total += Math.round(item.price * item.count)
-            totalWeight += item.weight * item.count
-          })}Rs. {total} & {totalWeight.toFixed(2)} kgs <br />
-          <Link to="/checkout">
-            <button className="item-btn">Next</button>
-          </Link>
-          </div>
-        </>
-      )}
-      </div>
-    </div>
-  );
+.cart-wrapper {
+  min-height: 80vh;
+  display: grid;
+  place-items: center;
+  margin: auto;
+  width: 80%
 }
 
-export default Cart;
+.cart-item {
+  display: grid;
+  place-items: center;
+  border: 1px solid #cdcdcd;
+  text-align: left;
+  border-radius: 15px;
+  padding: 10px;
+  width: -webkit-fill-available;
+  margin-bottom: 10px;
+}
+
+.item-expectedDelivery {
+  margin-left: 10px;
+}
+
+.cart-container button {
+  margin-top: 10px;
+}
+
+.item-count {
+  font-size: small;
+}
+
+.cart-price {
+  display: grid;
+  justify-content: center;
+}
+
+.cart-list {
+  width: 80%;
+}
