@@ -10,15 +10,10 @@
 .item-detail {
   display: flex;
   justify-content: center;
-  align-items: center;
   width: 100%;
   margin-top: 50px;
 }
 
-.item-detail-image {
-  height: 500px;
-  display: flex;
-}
 
 .item-detail-info {
   margin-left: 15px;
@@ -62,7 +57,4 @@
   text-align: center;
   margin-left: 5px;
   height: 35px;
-}
-
-.item-description {
 }

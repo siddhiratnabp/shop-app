@@ -8,6 +8,8 @@ import { app } from "../../firebaseConfig";
 import parse from 'html-react-parser';
 import { TabView, TabPanel } from 'primereact/tabview';
 import { Galleria } from 'primereact/galleria';
+import "primeflex/primeflex.css"
+import 'primereact/resources/themes/nano/theme.css'
 
 
 
@@ -62,7 +64,16 @@ function ItemDetail() {
     <div className="item-detail-container">
       <Link to="/"> &#8592; Back</Link>
       <div className="item-detail">
-        <Galleria value={[item["**Product Images1"], item["Product Images2"]]} responsiveOptions={responsiveOptions} numVisible={5} style={{ maxWidth: '640px' }} 
+        <Galleria value={[
+          item["*Product Images1"],
+          item["Product Images2"],
+          item["Product Images3"],
+          item["Product Images4"],
+          item["Product Images5"],
+          item["Product Images6"],
+          item["Product Images7"],
+          item["Product Images8"]
+        ]} responsiveOptions={responsiveOptions} numVisible={5} style={{ maxWidth: '640px' }} 
     item={itemTemplate} thumbnail={thumbnailTemplate} activeIndex={0} />
         <div className="item-detail-info">
           <div className="item-brand" style={{ margin: "0px 10px" }}>
@@ -70,13 +81,6 @@ function ItemDetail() {
           </div>
           <div className="item-name">{item["Product Name(English)"]}</div>
           <div className="item-price">Rs. {item["Actual Price"]}</div>
-
-          <select className="item-size">
-            <option value={"S"}> Select size (S)</option>
-            <option value={"M"}> Select size (M)</option>
-            <option value={"L"}> Select size (L)</option>
-            <option value={"XL"}> Select size (XL)</option>
-          </select>
           <button
             className="item-btn"
             style={
@@ -108,28 +112,30 @@ function ItemDetail() {
                 if(itemCartCount === 1) {setIsAdded(false) };
               }}>
                 -
-              </button> <br /><button
+              </button> <button
                 className="item-btn"><Link to="/cart">Go to Cart <i class='fas fa-shopping-cart'></i></Link></button></span>
               : ""
           }
-
-
-<TabView>
-                <TabPanel header="Highlights">
-                 {item["Highlights"]}
-                </TabPanel>
-                <TabPanel header="Main Description">
-                 {item["Main Description"]}
-                </TabPanel>
-                <TabPanel header="Header III">
-                    <p className="m-0">
-                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti 
-                        quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in
-                        culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. 
-                        Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.
-                    </p>
-                </TabPanel>
-            </TabView>
+          <br /><br />
+        <div className="card">
+          <TabView>
+            <TabPanel header="Highlights">
+              {parse(item["Highlights"] ? item["Highlights"] : "")}
+            </TabPanel>
+            <TabPanel header="Main Description">
+              {parse(item["Main Description"] ? item["Main Description"] : "")}
+            </TabPanel>
+            <TabPanel header="Shipping Attributes">
+              <b>These are only the shipping attributes. Please find the product height width in Highlights tab.</b>
+              <ul>
+                <li>Package Weight (approx.): {item["Package Weight"]}</li>
+                <li>Package Length: {item["Package Length"]}</li>
+                <li>Package Width: {item["Package Weight"]}</li>
+                <li>Package Height: {item["Package Height"]}</li>
+              </ul>
+            </TabPanel>
+          </TabView>
+        </div>
         </div>
       </div>
     </div>
