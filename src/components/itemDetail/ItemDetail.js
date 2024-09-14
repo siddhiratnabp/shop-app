@@ -1,34 +1,50 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./ItemDetail.css";
 import items from "../../mockData/items.json";
 import { GlobalContext } from "../../context/GlobalState";
+import { get, getDatabase, ref, limitToFirst, query, limitToLast } from "firebase/database";
+import { app } from "../../firebaseConfig";
 
-const getItemDetail = (id) => items.filter((item) => item.id === id)[0];
+
+
 
 function ItemDetail() {
   const params = useParams();
   const itemId = parseInt(params?.id);
-  const item = !!itemId && getItemDetail(itemId);
+  const [item, setItem] = useState({});
   const { addItemToCartList, cart, removeItemFromCartList, setItemCountinCart } = useContext(GlobalContext);
   const [isAdded, setIsAdded] = useState(
     cart.findIndex((c) => c.id === itemId) > -1
   );
   const itemCartCount = isAdded ? cart.find(obj => obj.id === item.id).count : 0;
 
+  useEffect(() => {
+    const db = getDatabase(app);
+    const dbRef = ref(db, `products/${itemId}`);
+    get(dbRef).then((snapshot) => {
+      if (snapshot.exists()) {
+        if (snapshot.val() !== undefined) {
+          setItem(snapshot.val())
+        }
+      }
+    });
+  }, [])
+
+
   return (
     <div className="item-detail-container">
       <Link to="/"> &#8592; Back</Link>
       <div className="item-detail">
         <div className="item-detail-image">
-          <img src={item.image.includes("https://") ? item.image : '/shop-app/' + item.image} alt={"Item image"} />
+          <img src={item["*Product Images1"]} alt={"Item image"} />
         </div>
         <div className="item-detail-info">
           <div className="item-brand" style={{ margin: "0px 10px" }}>
-            {item.brand}
+            {item["Category"] + ' > ' + item["Sub Category"]} 
           </div>
-          <div className="item-name">{item.name}</div>
-          <div className="item-price">Rs. {item.price}</div>
+          <div className="item-name">{item["Product Name(English)"]}</div>
+          <div className="item-price">Rs. {item["Actual Price"]}</div>
 
           <select className="item-size">
             <option value={"S"}> Select size (S)</option>
@@ -74,12 +90,7 @@ function ItemDetail() {
 
 
           <p className="item-description">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged.
+            {item["Highlights"]}
           </p>
         </div>
       </div>

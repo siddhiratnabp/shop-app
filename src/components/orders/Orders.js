@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../context/GlobalState";
-import { child, get, getDatabase, ref } from "firebase/database";
+import { get, getDatabase, ref } from "firebase/database";
 import { app } from "../../firebaseConfig";
 import { Accordion, AccordionTab } from 'primereact/accordion';
 import { DataTable } from 'primereact/datatable';
