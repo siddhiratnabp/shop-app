@@ -1,16 +1,15 @@
 .checkout-container {
-  margin-top: 20px;
-  border-radius: 15px;
-  padding: 20px;
-  max-width: 500px;
+  margin: auto;
+  width: 80%;
 }
 
 .custom-row {
-  padding: 6px 15px;
-  margin: 10px;
+  padding: 10px 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   border: 1px solid #cdcdcd;
   border-radius: 15px;
-  display: block;
+  /* display: block; */
   text-align: left;
 }
 
@@ -21,10 +20,29 @@
 }
 
 .custom-row span {
-  margin: 2px 15px;
+  /* margin: 2px 15px; */
+}
+
+.cart-number {
+  display: flex;
+  justify-content: space-between;
+  
+  span {
+    align-self: center;
+  }
 }
 
 .checkout-container a {
   color: rgb(255 0 57);
   text-decoration: underline;
+}
+
+.custom-row-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.custom-row-form:first-child {
+  padding-top: 100px;
 }
