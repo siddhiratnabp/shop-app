@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import "./Shop.css";
 import ItemList from "../itemList/ItemList";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Search from "../search/Search";
 import Select from 'react-select'
+import { GlobalContext } from "../../context/GlobalState";
 
 const getCategoriesOptions = (categories) => {
     let categoryOptions = [];
@@ -42,7 +43,8 @@ const filterProducts = (products, selectedCategory, selectedSubCategory) => {
     } return products.filter((product) => product["Sub Category"] === selectedSubCategory.value);
 }   
 
-function Shop({products, categories}) {
+function Shop() {
+    const { products, categories } = useContext(GlobalContext);
     const [productsArray, setProductsArray] = useState([])
     const [currentProductsArray, setCurrentProductsArray] = useState([])
     const [categoriesOptions, setcategoriesOptions] = useState([])
@@ -58,7 +60,7 @@ function Shop({products, categories}) {
         let subCategoryOptions = getSubCategoriesOptions(categories)
         setcategoriesOptions(categoryOptions)    
         setSubCategoriesOptions(subCategoryOptions) 
-    }, [products, categories])
+    }, [])
 
     useEffect(() => {
         if(selectedCategory != null || selectedSubCategory != null) {

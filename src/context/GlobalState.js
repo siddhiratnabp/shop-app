@@ -3,11 +3,13 @@ import AppReducer from "./AppReducer";
 
 const initialState = {
   cart: JSON.parse(localStorage.getItem('cart')) ? JSON.parse(localStorage.getItem('cart')) : [],
-  orders: JSON.parse(localStorage.getItem('orders')) ? JSON.parse(localStorage.getItem('orders')) : [],
   deviceID: localStorage.getItem('deviceID') ? localStorage.getItem('deviceID') : '',
   fullAddress: localStorage.getItem('fullAddress') ? localStorage.getItem('fullAddress') : '',
   fullName: localStorage.getItem('fullName') ? localStorage.getItem('fullName') : '',
-  phone: localStorage.getItem('phone') ? localStorage.getItem('phone') : ''
+  phone: localStorage.getItem('phone') ? localStorage.getItem('phone') : '',
+  orders: [],
+  products: [],
+  categories: []
 };
 
 export const GlobalContext = createContext(initialState);
@@ -49,9 +51,9 @@ export const GlobalProvider = ({ children }) => {
     });
   };
 
-  const removeItemFromOrderList = (item) => {
+  const clearOrders = (item) => {
     dispatch({
-      type: "REMOVE_ITEM_IN_ORDER",
+      type: "CLEAR_ORDERS",
       payload: item,
     });
   };
@@ -83,6 +85,20 @@ export const GlobalProvider = ({ children }) => {
       payload: item,
     });
   };
+  
+  const addProducts = (item) => {
+    dispatch({
+      type: "ADD_PRODUCTS",
+      payload: item,
+    });
+  };
+
+  const addCategories = (item) => {
+    dispatch({
+      type: "ADD_CATEGORIES",
+      payload: item,
+    });
+  };
 
   return (
     <GlobalContext.Provider
@@ -93,16 +109,20 @@ export const GlobalProvider = ({ children }) => {
         fullAddress: state.fullAddress,
         fullName: state.fullName,
         phone: state.phone,
+        products: state.products,
+        categories: state.categories,
         addItemToCartList,
         removeItemFromCartList,
         clearCart,
         addItemToOrderList,
-        removeItemFromOrderList,
+        clearOrders,
         setItemCountinCart,
         addFullAddress,
         addFullName,
         addPhone,
-        addDeviceID
+        addDeviceID,
+        addProducts,
+        addCategories
       }}
     >
       {children}

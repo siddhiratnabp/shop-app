@@ -11,9 +11,10 @@ import {app, storage} from '../../firebaseConfig.js';
 import { Message } from 'primereact/message';
 import { Inplace, InplaceDisplay, InplaceContent } from 'primereact/inplace';
 import { Button } from 'primereact/button';
+import { Badge } from 'primereact/badge';
 
 function Payment({buyingStep, setBuyingStep, buyingSteps, toastBottomCenter}) {
-    const { cart, orders, clearCart, deviceID } = useContext(GlobalContext);
+    const { cart, orders, clearCart, deviceID, clearOrders } = useContext(GlobalContext);
     const [ ssUploaded, setSSUploaded ] = useState(false);
     const fileUploaderRef = useRef(null);
     const navigate = useNavigate();
@@ -79,24 +80,14 @@ function Payment({buyingStep, setBuyingStep, buyingSteps, toastBottomCenter}) {
             return;
         }
         const db = getDatabase(app);
-        const newDocRef = push(ref(db, "orders"))
-        set(newDocRef, {
-        orderId: orders.length + 1,
-        buyerId: deviceID,
-        items: [...cart],
-        subTotal: orders[0].subTotal,
-        shippingCharge: orders[0].shippingCharge,
-        district: orders[0].district,
-        municipality: orders[0].municipality,
-        area: orders[0].area,
-        branch: orders[0].branch,
-        address: orders[0].address,
-        isConfirmed: true,
-        }).then(() => {  
+        const newDocRef = push(ref(db, "orders/" + deviceID))
+        set(newDocRef,
+            orders[0]
+        ).then(() => {  
         toastBottomCenter.current.show({
             severity: 'success',
             summary: "Order Created Successfully!",
-            detail: `Your Order with Order ID ${orders.length + 1} has been created successfully.`,
+            detail: `Your Order with Order ID ${orders[0].orderId} has been created successfully.`,
             life: 3000
         });
         }).catch((error) => {
@@ -109,6 +100,7 @@ function Payment({buyingStep, setBuyingStep, buyingSteps, toastBottomCenter}) {
         })
 
         clearCart();
+        clearOrders();
         
         navigate('/orders');
     }
@@ -116,13 +108,14 @@ function Payment({buyingStep, setBuyingStep, buyingSteps, toastBottomCenter}) {
     return ( 
     <div className="payment-wrapper">
         <Steps model={buyingSteps} activeIndex={buyingStep} />
+        <p><i class="fa-solid fa-money-bill"></i> Please pay total <strong>Rs. {orders[0].shippingCharge + orders[0].subTotal}</strong> (Rs. {orders[0].subTotal} + Delivery Charge: Rs. {orders[0].shippingCharge}) to confirm your order.</p>
         <h3 align={"center"}>
           Payment QR Code <br />
           <button className="item-btn"onClick={downloadQR}>
           <i class="fa fa-download" aria-hidden="true"></i> Download QR 
           </button><br/>
           <img src="/shop-app/SIDDHI RATNA BHADA PASAL_Qr.png" className="qr-code"/><br />
-          Attach and Upload the Screenshot of the Payment Below to Proceed:
+          Attach and Upload the <Badge value="Screenshot of Payment" size="large" severity="warning"></Badge> Below to Proceed:
           <FileUpload ref={fileUploaderRef} name="demo[]" customUpload uploadHandler={uploadScreenshot} 
           accept="image/*" url="/" maxFileSize={1000000}
           emptyTemplate={<p className="m-0"

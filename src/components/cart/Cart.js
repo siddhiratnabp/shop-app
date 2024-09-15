@@ -26,9 +26,6 @@ function Cart({buyingStep, buyingSteps, setBuyingStep}) {
                   <div className="cart-item-wrapper">
                   <Link to={`/item/${item.id}`} key={item.id}>
                   <div className="item-name">{item.name}</div>
-                  {/* <div className="item-expectedDelivery">
-                    (Expected Delivery 3 - 6 days)
-                  </div> */}
                 </Link>
                 <div className="item-price">Rs. {item.price} <span className="item-count">
                   <button onClick={()=>{addItemToCartList(item)}}
@@ -42,7 +39,7 @@ function Cart({buyingStep, buyingSteps, setBuyingStep}) {
                 </span>
                  = <strong>Rs. {Math.round(item.price * item.count)}</strong>
                 </div>
-                <div style={{padding: 10}}>Estimated Weight = {(item.weight * item.count).toFixed(2)} kg(s)</div>
+                <div style={{padding: 10}}>Estimated Package Weight: {(item.weight * item.count).toFixed(2)} kg(s)</div>
                   </div>
                   <img src={item.mainImage} style={{maxWidth: "20%"}} />
               </div>

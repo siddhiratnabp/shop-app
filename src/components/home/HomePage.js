@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Item from "../item/Item";
 import "./HomePage.css";
 import Search from "../search/Search";
+import { GlobalContext } from "../../context/GlobalState";
         
 
-function HomePage({products, categories}) {
+function HomePage() {
+  let {products, categories} = useContext(GlobalContext)
   var settings = {
     dots: true,
     infinite: true,
@@ -56,13 +58,13 @@ function HomePage({products, categories}) {
     products.sort((product1, product2) => {
       return product1["Carousel Index"] - product2["Carousel Index"]
     })
-  }, [products])
+  }, [])
 
   
 
   return (
     <section>
-      <Search products={products} categories={categories}/>
+      <Search/>
       <Slider {...settings}>
         {
         products.map((item) => {
@@ -91,6 +93,7 @@ function HomePage({products, categories}) {
               height={item["Package Height"]}
               darazId={item["Daraz Product ID"]}
               id={item["id"]}
+              key={item.SKU}
             />
           }
         })}

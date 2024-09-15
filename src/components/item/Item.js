@@ -9,7 +9,7 @@ function Item({ name, category, subCategory, mainImage, image2, image3, image4, 
  }) {
   const { addItemToCartList, cart, removeItemFromCartList } = useContext(GlobalContext);
   const [isAdded, setIsAdded] = useState(
-    cart.findIndex((c) => c.id === id) > -1
+    cart.findIndex((c) => Number(c.id) === Number(id)) > -1
   );
   const navigate = useNavigate();
 
@@ -25,18 +25,17 @@ function Item({ name, category, subCategory, mainImage, image2, image3, image4, 
         {
           isAdded ? <Link to={'/cart'}><span className="success-btn">Go to cart <i class="fas fa-shopping-cart"></i></span></Link> 
           :(<>
-          <i  onClick={() => {
-            // addItemToCartList({ name, rating, price, saleDiscount, image, brand, id, weight });
-            addItemToCartList({ mainImage, weight, id, name, price, sku });
-            setIsAdded(true);
-          }}
-      class="fa-solid fa-cart-plus"></i>
-          <span onClick={() => {
-            addItemToCartList({ mainImage, weight, id, name, price, sku });
-            setIsAdded(true);
-            navigate("/cart");
-          }} >Buy</span>
-          </>
+            <i onClick={() => {
+              addItemToCartList({ mainImage, weight, id, name, price, sku });
+              setIsAdded(true);
+            }}
+        class="fa-solid fa-cart-plus"></i>
+            <span onClick={() => {
+              addItemToCartList({ mainImage, weight, id, name, price, sku });
+              setIsAdded(true);
+              navigate("/cart");
+            }} style={{color: 'white', background: "green", padding: "5px"}} >Buy</span>
+            </>
           )
         }   
       </div>

@@ -83,7 +83,7 @@ const assignShippingCharges = (
 
 
 const Checkout = ({buyingStep, setBuyingStep, toastBottomCenter}) => {
-  const { cart, orders, addItemToOrderList, addFullAddress, fullAddress, fullName, addFullName, phone, addPhone} = useContext(GlobalContext);
+  const { cart, deviceID, addItemToOrderList, addFullAddress, fullAddress, fullName, addFullName, phone, addPhone} = useContext(GlobalContext);
   const navigate = useNavigate();
   
   const [shippingCharges, setShippingCharges] = useState([]);
@@ -160,7 +160,7 @@ const Checkout = ({buyingStep, setBuyingStep, toastBottomCenter}) => {
   }, []);
 
   // Totals Calculation
-  const subTotal = Math.floor(cart?.reduce((sum, curr) => sum + curr.price, 0));
+  const subTotal = Math.floor(cart?.reduce((sum, curr) => sum + Number(curr.price) *Number(curr.count) , 0));
   const weightTotal = cart.reduce((sum, item)=> sum + item.count * item.weight, 0)
   
   // Shipping Charges Calculation
@@ -220,19 +220,22 @@ const Checkout = ({buyingStep, setBuyingStep, toastBottomCenter}) => {
       return;
     }
     addItemToOrderList({
-      orderId: orders.length + 1,
-      buyerId: 1,
+      orderId: Math.floor(100000 + Math.random() * 900000), // Random 6 digit number
       items: [...cart],
       subTotal: subTotal,
       shippingCharge: shippingCharge,
+      buyerId: deviceID,
+      name: fullName,
+      phone: phone,
       district: selected.district,
       municipality: selected.municipality,
       area: selected.area,
       branch: selected.branch,
       address: fullAddress,
-      name: fullName,
-      phone: phone,
-      isConfirmed: false,
+      orderState: 'processing',
+      orderStep: 0,
+      orderDate: new Date().toString(),
+      trackingID: ""
     });
     setBuyingStep(2);
     navigate('/payment');

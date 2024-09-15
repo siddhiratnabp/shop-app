@@ -2,8 +2,8 @@ var reducer = (state, action) => {
   var newCart, item, index;
   switch (action.type) {
     case "ADD_ITEM_IN_CART":
-      item = state.cart.find(obj => obj.id === action.payload.id)
-      index = state.cart.findIndex(obj => obj.id === action.payload.id)
+      item = state.cart.find(obj => Number(obj.id) === Number(action.payload.id))
+      index = state.cart.findIndex(obj => Number(obj.id) === Number(action.payload.id))
       if(item !== undefined && "count" in item) {
         item.count += 1
         state.cart.splice(index, 1, item);
@@ -18,8 +18,8 @@ var reducer = (state, action) => {
         cart: newCart,
       };
     case "REMOVE_ITEM_IN_CART":
-      item = state.cart.find(obj => obj.id === action.payload.id)
-      index = state.cart.findIndex(obj => obj.id === action.payload.id)
+      item = state.cart.find(obj => Number(obj.id) === Number(action.payload.id))
+      index = state.cart.findIndex(obj => Number(obj.id) === Number(action.payload.id))
       if (item.count > 1) {
         item.count -= 1
         state.cart.splice(index, 1, item);
@@ -33,11 +33,11 @@ var reducer = (state, action) => {
         cart: newCart,
       };
     case "SET_ITEM_COUNT_IN_CART":
-      item = state.cart.find(obj => obj.id === action.payload.item.id)
-      index = state.cart.findIndex(obj => obj.id === action.payload.item.id)
+      item = state.cart.find(obj => Number(obj.id) === Number(action.payload.item.id))
+      index = state.cart.findIndex(obj => Number(obj.id) === Number(action.payload.item.id))
       
       if (Number(action.payload.cartCount) === 0) {
-        newCart = state.cart.filter((obj) => obj.id !== action.payload.item.id)
+        newCart = state.cart.filter((obj) => Number(obj.id) !== Number(action.payload.item.id))
       } else {
         item.count = action.payload.cartCount
         state.cart.splice(index, 1, item);
@@ -60,12 +60,10 @@ var reducer = (state, action) => {
         ...state,
         orders: [action.payload, ...state.orders],
       };
-    case "REMOVE_ITEM_IN_ORDER":
+    case "CLEAR_ORDERS":
       return {
         ...state,
-        orders: state.orders.filter(
-          (order) => order.orderId !== action.payload.id
-        ),
+        orders: [],
       };
     case "ADD_ADDRESS":
       localStorage.setItem('fullAddress', action.payload);
@@ -90,6 +88,16 @@ var reducer = (state, action) => {
       return {
         ...state,
         deviceID: action.payload,
+      };
+    case "ADD_PRODUCTS":
+      return {
+        ...state,
+        products: action.payload,
+      };
+    case "ADD_CATEGORIES":
+      return {
+        ...state,
+        categories: action.payload,
       };
     default:
       return state;

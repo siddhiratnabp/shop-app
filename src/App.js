@@ -18,7 +18,7 @@ import Reviews from "./components/reviews/Reviews";
 
 
 function App() {
-  let {deviceID,addDeviceID} = useContext(GlobalContext)
+  let {deviceID,addDeviceID, addProducts, addCategories} = useContext(GlobalContext)
   
   // Get Unique Device ID
   if (!deviceID) {
@@ -57,10 +57,12 @@ function App() {
             }
           })
           products.reverse();
+          addProducts(products);
+          addCategories(categories);
         }
       }
     });
-  });
+  }, []);
 
   const showToTopButton = () => {
     alert("Scrolling")
@@ -91,10 +93,10 @@ function App() {
           <Route path="/cart" element={<Cart buyingStep={buyingStep} buyingSteps={buyingSteps} setBuyingStep={setBuyingStep} toastBottomCenter={toastBottomCenter} />} />
           <Route path="/checkout" element={<Checkout buyingStep={buyingStep} setBuyingStep={setBuyingStep} buyingSteps={buyingSteps} toastBottomCenter={toastBottomCenter} />} />
           <Route path="/payment" element={<Payment buyingStep={buyingStep} setBuyingStep={setBuyingStep} buyingSteps={buyingSteps} toastBottomCenter={toastBottomCenter} />} />
-          <Route path="/shop" element={<Shop products={products} categories={categories} />} />
+          <Route path="/shop" element={<Shop />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/reviews" element={<Reviews />} />
-          <Route exact path="" element={<HomePage products={products} categories={categories} />} />
+          <Route exact path="" element={<HomePage />} />
         </Routes>
       </BrowserRouter>
       <TawkMessengerReact

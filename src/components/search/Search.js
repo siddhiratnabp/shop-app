@@ -27,8 +27,8 @@ const assignGroupedProducts = (products, categories) => {
     return groupedProducts
   }
 
-function Search ({products, categories}) {
-    const { addItemToCartList, cart } = useContext(GlobalContext);
+function Search () {
+    const { addItemToCartList, cart, products, categories } = useContext(GlobalContext);
     const navigate = useNavigate();
     const [searchQuery, setSearchQuery] = useState(null);
     const [filteredProducts, setFilteredProducts] = useState(null);
@@ -36,7 +36,7 @@ function Search ({products, categories}) {
     useEffect(() => {
         const assignedGroupedProducts = assignGroupedProducts(products, categories)
         setGroupedProducts(assignedGroupedProducts)
-    },[products,categories])
+    },[])
 
     const groupedScTemplate = (sc) => {
         return (
@@ -47,27 +47,31 @@ function Search ({products, categories}) {
     };
 
     const itemTemplate = (item) => {
-        // let name = item.name, rating = item.rating, price=item.price, saleDiscount=item.saleDiscount, image=item.image, brand=item.brand, id=item.id, weight=item.weight
-        
-        // let isAdded = cart.findIndex((c) => c.id === id) > -1
+        let name = item["Product Name(English)"], mainImage = item['*Product Images1'],
+        id = item.id, weight = item['Package Weight'], price = item['Actual Price'],
+        sku = item.SKU
         return (
-            <Link to={`/item/${item.id}`} key={item.id}>
-                <div className="flex flex-wrap p-2 align-items-center gap-3">
+            <div className="flex flex-wrap p-2 align-items-center gap-3">
+                    <Link to={`/item/${item.id}`} key={item.id}>
                     <img className="w-4rem shadow-2 flex-shrink-0 border-round" src={`${item['*Product Images1']}`} alt={item["Product Name(English)"]} />
+                    </Link>
                     <div className="flex-1 flex flex-column gap-2">
+                        <Link to={`/item/${item.id}`} key={item.id}>
                         <span className="font-bold">{item['Product Name(English)']}</span>
                         <div className="flex align-items-center gap-2">
                             <i className="pi pi-tag text-sm"></i>
                             <span>{item.label}</span>
                         </div>
+                        </Link>
                     </div>
-                    <span className="font-bold text-900">Rs. {item["Actual Price"]}</span>
+                    <Link to={`/item/${item.id}`} key={item.id}>
+                        <span className="font-bold text-900">Rs. {item["Actual Price"]}</span>
+                    </Link>
                     <Button label="Buy" severity="success" onClick={() => {
-                        // addItemToCartList({ name, rating, price, saleDiscount, image, brand, id, weight });
+                        addItemToCartList({ mainImage, weight, id, name, price, sku });
                         navigate("/cart");
                     }} />
                 </div>
-            </Link>
         )
     }
 
@@ -92,7 +96,7 @@ function Search ({products, categories}) {
       <i class="fa-solid fa-magnifying-glass"></i>
       <AutoComplete value={searchQuery} suggestions={filteredProducts} completeMethod={search}
           field="label" optionGroupLabel="label" optionGroupChildren="items" optionGroupTemplate={groupedScTemplate} placeholder="Find product"
-          itemTemplate={itemTemplate} onBlur={() => setSearchQuery("")}>
+          itemTemplate={itemTemplate} onBlur={() => setSearchQuery("")} onChange={(e) => setSearchQuery(e.target.value)}>
       </AutoComplete>
     </span>
     )

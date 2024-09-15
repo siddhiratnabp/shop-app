@@ -19,9 +19,10 @@ function ItemDetail() {
   const [item, setItem] = useState({});
   const { addItemToCartList, cart, removeItemFromCartList, setItemCountinCart } = useContext(GlobalContext);
   const [isAdded, setIsAdded] = useState(
-    cart.findIndex((c) => c.id === itemId) > -1
+    cart.findIndex((c) => Number(c.id) === itemId) > -1
   );
-  const itemCartCount = isAdded ? cart.find(obj => obj.id === item.id).count : 0;
+  const itemCartCount = isAdded ? cart.find(obj => Number(obj.id) === Number(itemId)).count : 0;
+  
 
   useEffect(() => {
     const db = getDatabase(app);
@@ -92,7 +93,14 @@ function ItemDetail() {
               {background:"#4BB543"}
             }
             onClick={() => {
-              addItemToCartList(item);
+              addItemToCartList({ 
+                mainImage: item["*Product Images1"],
+                weight: item["Package Weight"],
+                id: itemId,
+                name: item["Product Name(English)"],
+                price: item["Actual Price"],
+                sku: item.SKU
+              });
               setIsAdded(true);
             }}
           >
@@ -106,14 +114,28 @@ function ItemDetail() {
                 if(isNaN(value)) {return}
                 if(Number(e.target.value) === 0) {setIsAdded(false)}
                 setItemCountinCart({
-                  item: item,
-                  cartCount: e.target.value
+                  item: { 
+                    mainImage: item["*Product Images1"],
+                    weight: item["Package Weight"],
+                    id: itemId,
+                    name: item["Product Name(English)"],
+                    price: item["Actual Price"],
+                    sku: item.SKU
+                  },
+                  cartCount: Number(e.target.value)
                 })
               }}
               />
               <button className="item-btn" style={{ width: '40px', marginLeft: '5px', background: '#de450a'}}
               onClick = {() => {
-                removeItemFromCartList(item);
+                removeItemFromCartList({
+                  mainImage: item["*Product Images1"],
+                  weight: item["Package Weight"],
+                  id: itemId,
+                  name: item["Product Name(English)"],
+                  price: item["Actual Price"],
+                  sku: item.SKU
+                });
                 if(itemCartCount === 1) {setIsAdded(false) };
               }}>
                 -
